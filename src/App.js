@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import './Components/ExpenseItem';
+import ExpenseItem from "./Components/ExpenseItem";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           Learn React
         </a>
       </header>
+      <ExpenseItem></ExpenseItem>
+        <ExpenseItem></ExpenseItem>
     </div>
   );
 }
