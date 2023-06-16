@@ -1,9 +1,9 @@
 
 import './App.css';
-import ExpenseItem from "./Components/ExpenseItem";
-import Expenses from "./Components/Expenses";
 
-function App() {
+import Expenses from "./Components/Expenses/Expenses";
+
+const App = () => {
     const expenses = [
     {
             date : new Date(2023, 6, 15),
