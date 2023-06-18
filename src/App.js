@@ -7,13 +7,13 @@ import Expenses from "./Components/Expenses/Expenses";
         const DUMMY_EXPENSES = [
             {
                 id: 'e1',
-                date: new Date(2023, 6, 15),
+                date: new Date(2024, 6, 15),
                 title: 'New car',
                 amount: 199.99
             },
             {
                 id: 'e2',
-                date: new Date(2023, 5, 15),
+                date: new Date(2024, 5, 15),
                 title: 'New dress',
                 amount: 19.99
             }

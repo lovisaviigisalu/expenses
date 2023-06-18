@@ -1,36 +1,36 @@
 
-import ExpenseItem from "./ExpenseItem";
 import './Expenses.css'
 import Card from "../UI/Card";
-import './ExpensesFilter'
 import ExpensesFilter from "./ExpensesFilter";
 import {useState} from "react";
+import ExpenseItem from "./ExpenseItem";
 const Expenses = (props) => {
-    const[filteredYear, setFilteredYear] = useState('2023')
-    console.log('Your data in Expenses file is ' + filteredYear);
+    const [selectedYear, setSelectedYear] = useState(null);
 
-    const filterChangeHandler = (year) => {
-        console.log('Filter Change done by Expenses.js')
-        console.log(year + ' in Expenses.js')
-        setFilteredYear(year)
+    const filterChangeHandler = (enteredFilterData) => {
+        setSelectedYear(enteredFilterData.year);
     }
-return (
-   <Card className='expenses'>
-       <ExpensesFilter onSaveFilterData={props.expenseData}></ExpensesFilter>
-       {
-           props.expenseData.map((expense) => {
-               return <ExpenseItem
-               id={expense.id}
-               title={expense.title}
-               amount={expense.amount}
-               date={expense.date}
-               ></ExpenseItem>
-               })
-       }
+    const filteredExpenses = props.expenseData.filter((Expense) =>{
+        return Expense.date.getFullYear()=== selectedYear
+    })
+    let expensesContent = <p>No expenses founf</p>
+    if(filteredExpenses.length>0){
+        expensesContent =filteredExpenses.map((Expenses) => {
+            return <ExpenseItem
+                id={Expenses.id}
+                title={Expenses.title}
+                amount={Expenses.amount}
+                date={Expenses.date}
+            ></ExpenseItem>
+        })
+    }
+    return (
+        <Card className='expenses'>
+            <ExpensesFilter selected ={selectedYear} onChange={filterChangeHandler}></ExpensesFilter>
+            {expensesContent}
 
+        </Card>
 
-   </Card>
-
-)
+    )
 }
 export default Expenses
