@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import './ExpenseForm.css'
 const ExpenseForm = (props) => {
-    const [enteredTitle, setEnteredTitle] = useState('')
-    const [enteredAmount, setEnteredAmount] = useState('')
-    const [enteredDate, setEnteredDate] = useState('')
-
+    const [enteredTitle, setEnteredTitle] = useState('');
+    const [enteredAmount, setEnteredAmount] = useState('');
+    const [enteredDate, setEnteredDate] = useState('');
+    const [formEdit, setFormEdit] = useState(false);
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value)
     }
@@ -25,14 +25,18 @@ const ExpenseForm = (props) => {
         setEnteredTitle('')
         setEnteredAmount('')
         setEnteredDate('')
+        setFormEdit(false)
     }
 
     return(
-        <form onSubmit={submitHandler}>
-            <div className={'new-expense__controls'}>
-                <div className={'new-expense__control'}>
-                    <label className={''}>Title</label>
-                    <input className={''} type="text" onChange={titleChangeHandler} value={enteredTitle}/>
+        <div>
+            <button onClick={() => setFormEdit(true)}>Add expense</button>
+            {formEdit &&(
+             <form onSubmit={submitHandler}>
+                <div className={'new-expense__controls'}>
+                    <div className={'new-expense__control'}>
+                            <label className={''}>Title</label>
+                         <input className={''} type="text" onChange={titleChangeHandler} value={enteredTitle}/>
 
                 </div>
                 <div className={'new-expense__control'}>
@@ -45,9 +49,12 @@ const ExpenseForm = (props) => {
                 </div>
             </div>
             <div className={'new-expense__actions'}>
+                <button onClick={() => setFormEdit(false)}>Cancel</button>
                 <button type='submit'>Add Expense</button>
+
             </div>
         </form>
+            )}</div>
     )
 }
 
