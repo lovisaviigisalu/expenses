@@ -19,7 +19,12 @@ return (
        <ExpensesFilter onSaveFilterData={props.expenseData}></ExpensesFilter>
        {
            props.expenseData.map((expense) => {
-               return <ExpenseItem ExpenseData={expense}></ExpenseItem>
+               return <ExpenseItem
+               id={expense.id}
+               title={expense.title}
+               amount={expense.amount}
+               date={expense.date}
+               ></ExpenseItem>
                })
        }
 
