@@ -30,7 +30,7 @@ const ExpenseForm = (props) => {
 
     return(
         <div>
-            <button onClick={() => setFormEdit(true)}>Add expense</button>
+            <button onClick={() => setFormEdit(true)} type="Add expense">Add expense</button>
             {formEdit &&(
              <form onSubmit={submitHandler}>
                 <div className={'new-expense__controls'}>
